@@ -8,7 +8,7 @@
   "routes": [
     {
       "src": "/api/send-to-google",
-      "dest": "/api/send-to-google.js"
+      "dest": "api/send-to-google.js"
     }
   ]
 }
