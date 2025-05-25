@@ -12,28 +12,26 @@ export default async function handler(req, res) {
   const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf6s_uZDG-bOzhGPz9lt8W-TUJGKngxaZObOK9yhrsAIhZJGA/formResponse';
 
   const formData = new URLSearchParams();
-  formData.append('entry.1178573611', date);      // Data
-  formData.append('entry.1117559273', name);      // Nome paziente
-  formData.append('entry.1902715667', message);   // Messaggio
+  formData.append('entry.1178573611', date);
+  formData.append('entry.1117559273', name);
+  formData.append('entry.1902715667', message);
 
   try {
     const response = await fetch(formUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'User-Agent': 'Mozilla/5.0',
+        'User-Agent': 'Mozilla/5.0'
       },
-      body: formData.toString(),
+      body: formData.toString()
     });
 
-    if (response.ok || response.status === 0) {
-      res.setHeader('Content-Type', 'application/json');
+    if (response.ok) {
       return res.status(200).json({ success: true });
     } else {
-      const errorText = await response.text();
-      return res.status(500).json({ error: 'Form submission failed', details: errorText });
+      return res.status(500).json({ error: 'Form submission failed' });
     }
   } catch (error) {
-    return res.status(500).json({ error: 'Request failed', details: error.message });
+    return res.status(500).json({ error: 'Internal server error', details: error.message });
   }
 }
