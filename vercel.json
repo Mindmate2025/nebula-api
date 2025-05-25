@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "functions": {
+    "api/send-to-google.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/send-to-google",
+      "dest": "/api/send-to-google.js"
+    }
+  ]
+}
