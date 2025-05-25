@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "functions": {
-    "api/send-to-google.js": {
-      "runtime": "nodejs18.x"
+  "builds": [
+    {
+      "src": "api/send-to-google.js",
+      "use": "@vercel/node"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/api/send-to-google",
