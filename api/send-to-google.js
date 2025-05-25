@@ -21,12 +21,13 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'User-Agent': 'Mozilla/5.0', // simulate browser agent
+        'User-Agent': 'Mozilla/5.0',
       },
       body: formData.toString(),
     });
 
     if (response.ok || response.status === 0) {
+      res.setHeader('Content-Type', 'application/json');
       return res.status(200).json({ success: true });
     } else {
       const errorText = await response.text();
